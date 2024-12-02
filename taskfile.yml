@@ -1,0 +1,34 @@
+version: "3.17"
+
+tasks:
+    run:
+        deps: [check, clean]
+        cmds:
+            - cargo run
+
+    dist:
+        deps: [check]
+        cmds:
+            - cargo build --release
+
+    check:
+        deps: [lint, format]
+
+    lint:
+        cmds:
+            - cargo clippy --fix --allow-dirty
+
+    format:
+        cmds:
+            - cargo fmt --all
+
+    clean:
+        cmds:
+            - cargo machete
+
+    setup:
+        cmds:
+            - rustup update
+            - rustup component add clippy
+            - rustup component add rustfmt
+            - cargo install cargo-machete
