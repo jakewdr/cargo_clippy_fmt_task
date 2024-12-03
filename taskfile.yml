@@ -16,7 +16,7 @@ tasks:
 
     lint:
         cmds:
-            - cargo clippy --fix --allow-dirty
+            - cargo clippy --fix --allow-dirty --allow-no-vcs
 
     format:
         cmds:
